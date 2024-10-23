@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+</head>
+<body>
+    <h1>Calculadora</h1>
+    <input type="number" id="numero1" placeholder="Número 1">
+    <input type="number" id="numero2" placeholder="Número 2">
+    
+    <button onclick="realizarOperacion('suma')">Sumar</button>
+    <button onclick="realizarOperacion('resta')">Restar</button>
+    <button onclick="realizarOperacion('multiplicacion')">Multiplicar</button>
+    <button onclick="realizarOperacion('division')">Dividir</button>
+    <button onclick="potencia()">Potenciar</button>
+
+    <h2>Resultado: <span id="resultado"></span></h2>
+
+    <script>
+        function potencia() {
+            realizarOperacion("potencia");
+        }
+
+        function realizarOperacion(operacion) {
+            var num1 = parseFloat(document.getElementById("numero1").value);
+            var num2 = parseFloat(document.getElementById("numero2").value);
+            var resultado;
+
+            switch (operacion) {
+                case "suma":
+                    resultado = num1 + num2;
+                    break;
+
+                case "resta":
+                    resultado = num1 - num2;
+                    break;
+
+                case "multiplicacion":
+                    resultado = num1 * num2;
+                    break;
+
+                case "division":
+                    if (num2 !== 0) {
+                        resultado = num1 / num2;
+                    } else {
+                        resultado = "Error: No se puede dividir por cero";
+                    }
+                    break;
+
+                case "potencia":
+                    resultado = Math.pow(num1, num2);
+                    break;
+
+                default:
+                    resultado = "Operación no válida";
+            }
+
+            document.getElementById("resultado").innerText = resultado;
+        }
+    </script>
+</body>
+</html>
